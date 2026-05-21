@@ -1,1 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse burgers, hotdogs, snacks, sides, and drinks at Click &amp; Eat.">
+  <title>Menu | Click &amp; Eat</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark ce-navbar sticky-top" id="mainNavbar" aria-label="Main navigation">
+      <div class="container">
+        <a class="ce-logo navbar-brand" href="index.html" aria-label="Click and Eat home">
+          <span class="ce-logo__click">Click</span>
+          <span class="ce-logo__amp">&amp;</span>
+          <span class="ce-logo__eat">Eat</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+            <li class="nav-item"><a class="nav-link" href="deals.html">Deals</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+            <li class="nav-item">
+              <a class="nav-link position-relative" href="menu.html" aria-label="View cart">
+                Cart
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill ce-cart-badge" id="cart-count">0</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
 
+  <main>
+    <section class="page-hero" aria-labelledby="menu-page-title">
+      <div class="container text-center">
+        <h1 id="menu-page-title">Our Menu</h1>
+        <p class="mb-0">Order your favourites — add items to cart and pick up at the kiosk.</p>
+      </div>
+    </section>
+
+    <section class="container pb-5" aria-labelledby="burgers-heading">
+      <h2 id="burgers-heading" class="menu-category-title">Burgers</h2>
+      <div class="row g-4">
+        <article class="col-sm-6 col-lg-4">
+          <div class="card menu-item-card">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&amp;h=160&amp;fit=crop" alt="Classic beef burger with cheese" width="400" height="160">
+            <div class="card-body">
+              <h3 class="h6 card-title">Classic Beef Burger</h3>
+              <p class="card-text small text-muted">Beef patty, cheddar, lettuce, house sauce.</p>
+              <p class="menu-price">P45.00</p>
+              <button type="button" class="btn btn-ce-primary btn-add-cart" data-add-cart data-id="burger-classic" data-name="Classic Beef Burger" data-price="45">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+        <article class="col-sm-6 col-lg-4">
+          <div class="card menu-item-card">
+            <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee171?w=400&amp;h=160&amp;fit=crop" alt="Spicy chicken burger with jalapeños" width="400" height="160">
+            <div class="card-body">
+              <h3 class="h6 card-title">Spicy Chicken Burger</h3>
+              <p class="card-text small text-muted">Crispy chicken, jalapeños, spicy mayo.</p>
+              <p class="menu-price">P42.00</p>
+              <button type="button" class="btn btn-ce-primary btn-add-cart" data-add-cart data-id="burger-spicy" data-name="Spicy Chicken Burger" data-price="42">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+        <article class="col-sm-6 col-lg-4">
+          <div class="card menu-item-card">
+            <img src="https://images.unsplash.com/photo-1520072959219-c480dc1cae61?w=400&amp;h=160&amp;fit=crop" alt="Vegetarian veggie burger with avocado" width="400" height="160">
+            <div class="card-body">
+              <h3 class="h6 card-title">Veggie Campus Burger</h3>
+              <p class="card-text small text-muted">Plant patty, avocado, tomato, vegan mayo.</p>
+              <p class="menu-price">P38.00</p>
+              <button type="button" class="btn btn-ce-primary btn-add-cart" data-add-cart data-id="burger-veggie" data-name="Veggie Campus Burger" data-price="38">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <h2 id="hotdogs-heading" class="menu-category-title">Hotdogs</h2>
+      <div class="row g-4">
+        <article class="col-sm-6 col-lg-4">
+          <div class="card menu-item-card">
+            <img src="https://images.unsplash.com/photo-1617196034796-aa82c82ae0e9?w=400&amp;h=160&amp;fit=crop" alt="Classic campus hotdog with mustard" width="400" height="160">
+            <div class="card-body">
+              <h3 class="h6 card-title">Lecture Hall Hotdog</h3>
+              <p class="card-text small text-muted">Grilled frank, mustard, ketchup, onions.</p>
+              <p class="menu-price">P28.00</p>
+              <button type="button" class="btn btn-ce-primary btn-add-cart" data-add-cart data-id="hotdog-classic" data-name="Lecture Hall Hotdog" data-price="28">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+        <article class="col-sm-6 col-lg-4">
+          <div class="card menu-item-card">
+            <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&amp;h=160&amp;fit=crop" alt="Cheese-loaded hotdog with melted cheddar" width="400" height="160">
+            <div class="card-body">
+              <h3 class="h6 card-title">Cheese Melt Hotdog</h3>
+              <p class="card-text small text-muted">Extra cheddar, caramelised onions.</p>
+              <p class="menu-price">P32.00</p>
+              <button type="button" class="btn btn-ce-primary btn-add-cart" data-add-cart data-id="hotdog-cheese" data-name="Cheese Melt Hotdog" data-price="32">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <h2 id="snacks-heading" class="menu-category-title">Snacks</h2>
+      <div class="row g-4">
+        <article class="col-sm-6 col-lg-4">
+          <div class="card menu-item-card">
+            <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=400&amp;h=160&amp;fit=crop" alt="Crispy golden chicken wings on a plate" width="400" height="160">
+            <div class="card-body">
+              <h3 class="h6 card-title">Campus Wings (6pc)</h3>
+              <p class="card-text small text-muted">BBQ or buffalo — shareable snack.</p>
+              <p class="menu-price">P35.00</p>
+              <button type="button" class="btn btn-ce-primary btn-add-cart" data-add-cart data-id="snack-wings" data-name="Campus Wings (6pc)" data-price="35">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+        <article class="col-sm-6 col-lg-4">
+          <div class="card menu-item-card">
+            <img src="https://images.unsplash.com/photo-1585109649139-366131a3e9a2?w=400&amp;h=160&amp;fit=crop" alt="Basket of golden french fries" width="400" height="160">
+            <div class="card-body">
+              <h3 class="h6 card-title">Loaded Nachos</h3>
+              <p class="card-text small text-muted">Tortilla chips, cheese, salsa, guac.</p>
+              <p class="menu-price">P30.00</p>
+              <button type="button" class="btn btn-ce-primary btn-add-cart" data-add-cart data-id="snack-nachos" data-name="Loaded Nachos" data-price="30">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <h2 id="sides-heading" class="menu-category-title">Sides</h2>
+      <div class="row g-4">
+        <article class="col-sm-6 col-lg-4">
+          <div class="card menu-item-card">
+            <img src="https://images.unsplash.com/photo-1573080496219-4fa2f47a2927?w=400&amp;h=160&amp;fit=crop" alt="Crispy french fries in a paper container" width="400" height="160">
+            <div class="card-body">
+              <h3 class="h6 card-title">Crispy Fries</h3>
+              <p class="card-text small text-muted">Salted shoestring fries, large portion.</p>
+              <p class="menu-price">P15.00</p>
+              <button type="button" class="btn btn-ce-primary btn-add-cart" data-add-cart data-id="side-fries" data-name="Crispy Fries" data-price="15">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+        <article class="col-sm-6 col-lg-4">
+          <div class="card menu-item-card">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&amp;h=160&amp;fit=crop" alt="Fresh garden salad in a bowl" width="400" height="160">
+            <div class="card-body">
+              <h3 class="h6 card-title">Garden Side Salad</h3>
+              <p class="card-text small text-muted">Mixed greens, tomato, vinaigrette.</p>
+              <p class="menu-price">P18.00</p>
+              <button type="button" class="btn btn-ce-primary btn-add-cart" data-add-cart data-id="side-salad" data-name="Garden Side Salad" data-price="18">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+        <article class="col-sm-6 col-lg-4">
+          <div class="card menu-item-card">
+            <img src="https://images.unsplash.com/photo-1608039829572-785bebc29494?w=400&amp;h=160&amp;fit=crop" alt="Onion rings stacked on a plate" width="400" height="160">
+            <div class="card-body">
+              <h3 class="h6 card-title">Onion Rings</h3>
+              <p class="card-text small text-muted">Beer-battered rings with dip.</p>
+              <p class="menu-price">P16.00</p>
+              <button type="button" class="btn btn-ce-primary btn-add-cart" data-add-cart data-id="side-rings" data-name="Onion Rings" data-price="16">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <h2 id="drinks-heading" class="menu-category-title">Drinks</h2>
+      <div class="row g-4">
+        <article class="col-sm-6 col-lg-4">
+          <div class="card menu-item-card">
+            <img src="https://images.unsplash.com/photo-1546173159-315724a31696?w=400&amp;h=160&amp;fit=crop" alt="Mango banana smoothie in a tall glass" width="400" height="160">
+            <div class="card-body">
+              <h3 class="h6 card-title">Study Fuel Smoothie</h3>
+              <p class="card-text small text-muted">Mango, banana, low-fat yogurt.</p>
+              <p class="menu-price">P22.00</p>
+              <button type="button" class="btn btn-ce-primary btn-add-cart" data-add-cart data-id="drink-smoothie" data-name="Study Fuel Smoothie" data-price="22">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+        <article class="col-sm-6 col-lg-4">
+          <div class="card menu-item-card">
+            <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef68?w=400&amp;h=160&amp;fit=crop" alt="Iced cola in a glass with ice" width="400" height="160">
+            <div class="card-body">
+              <h3 class="h6 card-title">Ice-Cold Cola</h3>
+              <p class="card-text small text-muted">330ml canned soft drink, chilled.</p>
+              <p class="menu-price">P10.00</p>
+              <button type="button" class="btn btn-ce-primary btn-add-cart" data-add-cart data-id="drink-cola" data-name="Ice-Cold Cola" data-price="10">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+        <article class="col-sm-6 col-lg-4">
+          <div class="card menu-item-card">
+            <img src="https://images.unsplash.com/photo-1622597467836-520a0b0c2a77?w=400&amp;h=160&amp;fit=crop" alt="Bottled mineral water on a table" width="400" height="160">
+            <div class="card-body">
+              <h3 class="h6 card-title">Bottled Water</h3>
+              <p class="card-text small text-muted">500ml still water — stay hydrated.</p>
+              <p class="menu-price">P8.00</p>
+              <button type="button" class="btn btn-ce-primary btn-add-cart" data-add-cart data-id="drink-water" data-name="Bottled Water" data-price="8">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ce-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <a class="ce-logo d-inline-flex mb-2" href="index.html">
+            <span class="ce-logo__click">Click</span>
+            <span class="ce-logo__amp">&amp;</span>
+            <span class="ce-logo__eat">Eat</span>
+          </a>
+          <p class="footer-motto mb-2">&ldquo;Tap. Order. Feast.&rdquo;</p>
+          <p class="small mb-0">Campus food for Botswana students and lecturers.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h6 text-uppercase fw-bold">Quick Links</h3>
+          <ul class="list-unstyled small">
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="deals.html">Deals</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3 class="h6 text-uppercase fw-bold">Contact</h3>
+          <p class="small mb-0">Student Centre, Main Campus<br>Gaborone, Botswana<br>orders@clickandeat.co.bw</p>
+        </div>
+      </div>
+      <hr class="border-secondary my-4">
+      <p class="text-center small mb-0">&copy; <time datetime="2026">2026</time> Click &amp; Eat. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="cart-toast-container" id="cart-toast-container" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+</html>
