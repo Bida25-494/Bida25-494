@@ -1,211 +1,317 @@
 /**
- * Campus Bites - Interactive Scripts
- * Form validation (feedback.html) & menu category filtering (menu.html)
+ * Click & Eat — Main JavaScript
+ * Active navigation, menu filtering, cart badge, form validation
  */
 
-document.addEventListener('DOMContentLoaded', function () {
-  initNavbarActiveState();
-  initMenuFilter();
-  initFeedbackForm();
-});
+(function () {
+  "use strict";
 
-/**
- * Highlight active nav link based on current page
- */
-function initNavbarActiveState() {
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  const navLinks = document.querySelectorAll('.navbar-campus .nav-link');
+  /* --------------------------------------------------------------------------
+     State: Shopping cart count (session persistence via sessionStorage)
+     -------------------------------------------------------------------------- */
+  const CART_STORAGE_KEY = "clickEatCartCount";
 
-  navLinks.forEach(function (link) {
-    const href = link.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-      link.classList.add('active');
+  function getCartCount() {
+    const stored = sessionStorage.getItem(CART_STORAGE_KEY);
+    return stored ? parseInt(stored, 10) : 0;
+  }
+
+  function setCartCount(count) {
+    sessionStorage.setItem(CART_STORAGE_KEY, String(count));
+    updateCartBadgeUI(count);
+  }
+
+  function updateCartBadgeUI(count) {
+    const badges = document.querySelectorAll(".cart-badge-count");
+    badges.forEach(function (badge) {
+      badge.textContent = count;
+      badge.classList.add("bump");
+      setTimeout(function () {
+        badge.classList.remove("bump");
+      }, 300);
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     Active navigation link highlighting
+     -------------------------------------------------------------------------- */
+  function setActiveNavLink() {
+    let currentPage = window.location.pathname.split("/").pop() || "";
+    try {
+      currentPage = decodeURIComponent(currentPage);
+    } catch (e) {
+      /* use raw path segment */
     }
-  });
-}
+    currentPage = currentPage.split("?")[0].split("#")[0];
+    if (!currentPage || currentPage.indexOf(".") === -1) {
+      currentPage = "index.html";
+    }
+    const navLinks = document.querySelectorAll(".navbar-click-eat .nav-link[data-page]");
 
-/**
- * Menu category filtering for menu.html
- */
-function initMenuFilter() {
-  const filterBar = document.getElementById('menuFilterBar');
-  const menuGrid = document.getElementById('menuGrid');
+    navLinks.forEach(function (link) {
+      const linkPage = link.getAttribute("data-page");
+      if (linkPage === currentPage) {
+        link.classList.add("active");
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.classList.remove("active");
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
 
-  if (!filterBar || !menuGrid) return;
+  /* --------------------------------------------------------------------------
+     Navbar scroll shadow
+     -------------------------------------------------------------------------- */
+  function initNavbarScroll() {
+    const navbar = document.querySelector(".navbar-click-eat");
+    if (!navbar) return;
 
-  const filterButtons = filterBar.querySelectorAll('.filter-btn');
-  const menuItems = menuGrid.querySelectorAll('.menu-item');
+    function onScroll() {
+      if (window.scrollY > 20) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    }
 
-  filterButtons.forEach(function (button) {
-    button.addEventListener('click', function () {
-      const category = button.getAttribute('data-filter');
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
 
-      filterButtons.forEach(function (btn) {
-        btn.classList.remove('active');
+  /* --------------------------------------------------------------------------
+     Menu category filter (menu.html)
+     -------------------------------------------------------------------------- */
+  function initMenuFilter() {
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const menuItems = document.querySelectorAll(".menu-item-col");
+
+    if (!filterButtons.length || !menuItems.length) return;
+
+    filterButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const category = btn.getAttribute("data-filter");
+
+        filterButtons.forEach(function (b) {
+          b.classList.remove("active");
+          b.setAttribute("aria-pressed", "false");
+        });
+        btn.classList.add("active");
+        btn.setAttribute("aria-pressed", "true");
+
+        menuItems.forEach(function (item) {
+          const itemCategory = item.getAttribute("data-category");
+          const subCategory = item.getAttribute("data-subcategory") || "";
+
+          const matches =
+            category === "all" ||
+            itemCategory === category ||
+            (category.indexOf("drinks-") === 0 && subCategory === category);
+
+          if (matches) {
+            item.classList.remove("hidden-filter");
+            item.classList.add("fade-in");
+          } else {
+            item.classList.add("hidden-filter");
+            item.classList.remove("fade-in");
+          }
+        });
+
+        const subsectionTitles = document.querySelectorAll(".menu-subsection-title");
+        subsectionTitles.forEach(function (title) {
+          const titleFilter = title.getAttribute("data-show-for");
+          if (!titleFilter) return;
+
+          const visibleInSection = Array.from(menuItems).some(function (item) {
+            if (item.classList.contains("hidden-filter")) return false;
+            const sub = item.getAttribute("data-subcategory") || "";
+            const cat = item.getAttribute("data-category");
+            if (category === "all") return titleFilter === cat || titleFilter === sub;
+            if (category.indexOf("drinks-") === 0) return sub === category && titleFilter === sub;
+            return cat === category && (titleFilter === cat || titleFilter === category);
+          });
+
+          title.style.display = visibleInSection || category === "all" ? "" : "none";
+        });
       });
-      button.classList.add('active');
+    });
+  }
 
-      menuItems.forEach(function (item) {
-        const itemCategories = item.getAttribute('data-category');
+  /* --------------------------------------------------------------------------
+     Add to Order — cart badge + Bootstrap toast
+     -------------------------------------------------------------------------- */
+  function initAddToOrder() {
+    const addButtons = document.querySelectorAll("button.btn-add-order");
+    const toastEl = document.getElementById("cartToast");
+    let toastInstance = null;
 
-        if (category === 'all') {
-          item.classList.remove('hidden');
-        } else if (itemCategories && itemCategories.split(' ').includes(category)) {
-          item.classList.remove('hidden');
-        } else {
-          item.classList.add('hidden');
+    if (toastEl && typeof bootstrap !== "undefined") {
+      toastInstance = new bootstrap.Toast(toastEl, { delay: 2800 });
+    }
+
+    addButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const itemName = btn.getAttribute("data-item-name") || "Item";
+        const newCount = getCartCount() + 1;
+        setCartCount(newCount);
+
+        if (toastInstance) {
+          const toastBody = document.getElementById("cartToastBody");
+          if (toastBody) {
+            toastBody.textContent = itemName + " added to your order!";
+          }
+          toastInstance.show();
         }
       });
     });
-  });
-}
+  }
 
-/**
- * Feedback form validation for feedback.html
- */
-function initFeedbackForm() {
-  const form = document.getElementById('feedbackForm');
-  if (!form) return;
+  /* --------------------------------------------------------------------------
+     Feedback form validation + success modal
+     -------------------------------------------------------------------------- */
+  function initFeedbackForm() {
+    const form = document.getElementById("feedbackForm");
+    if (!form) return;
 
-  const nameInput = document.getElementById('feedbackName');
-  const emailInput = document.getElementById('feedbackEmail');
-  const roleSelect = document.getElementById('feedbackRole');
-  const commentsInput = document.getElementById('feedbackComments');
-  const successMessage = document.getElementById('formSuccessMessage');
+    const successModalEl = document.getElementById("feedbackSuccessModal");
+    let successModal = null;
+    if (successModalEl && typeof bootstrap !== "undefined") {
+      successModal = new bootstrap.Modal(successModalEl);
+    }
 
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
 
-    let isValid = true;
+      const fullName = document.getElementById("fullName");
+      const email = document.getElementById("email");
+      const role = document.getElementById("role");
+      const comments = document.getElementById("comments");
+      const ratingInputs = form.querySelectorAll('input[name="foodRating"]');
 
-    isValid = validateRequiredField(nameInput, 'Please enter your name.') && isValid;
-    isValid = validateEmailField(emailInput) && isValid;
-    isValid = validateRequiredField(roleSelect, 'Please select your role.') && isValid;
-    isValid = validateStarRating() && isValid;
-    isValid = validateRequiredField(commentsInput, 'Please share your comments.') && isValid;
+      let isValid = true;
+      form.classList.add("was-validated");
 
-    if (isValid) {
-      const rating = document.querySelector('input[name="rating"]:checked');
-      const ratingValue = rating ? rating.value : 'N/A';
-
-      if (successMessage) {
-        successMessage.textContent =
-          'Thank you, ' +
-          nameInput.value.trim() +
-          '! Your ' +
-          ratingValue +
-          '-star review has been received. We appreciate your feedback and will use it to make Campus Bites even better.';
-        successMessage.classList.add('show');
+      if (!fullName.value.trim()) {
+        fullName.classList.add("is-invalid");
+        isValid = false;
+      } else {
+        fullName.classList.remove("is-invalid");
+        fullName.classList.add("is-valid");
       }
 
-      alert(
-        'Thank you for your feedback!\n\nYour ' +
-          ratingValue +
-          '-star review has been submitted successfully. The Campus Bites team appreciates you!'
-      );
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email.value.trim() || !emailPattern.test(email.value)) {
+        email.classList.add("is-invalid");
+        isValid = false;
+      } else {
+        email.classList.remove("is-invalid");
+        email.classList.add("is-valid");
+      }
+
+      if (!role.value) {
+        role.classList.add("is-invalid");
+        isValid = false;
+      } else {
+        role.classList.remove("is-invalid");
+        role.classList.add("is-valid");
+      }
+
+      const ratingSelected = Array.from(ratingInputs).some(function (r) {
+        return r.checked;
+      });
+      const ratingWrap = document.getElementById("ratingGroup");
+      if (!ratingSelected) {
+        if (ratingWrap) ratingWrap.classList.add("is-invalid-group");
+        isValid = false;
+      } else if (ratingWrap) {
+        ratingWrap.classList.remove("is-invalid-group");
+      }
+
+      if (!comments.value.trim()) {
+        comments.classList.add("is-invalid");
+        isValid = false;
+      } else {
+        comments.classList.remove("is-invalid");
+        comments.classList.add("is-valid");
+      }
+
+      if (!isValid) return;
+
+      const userName = fullName.value.trim();
+      const modalUserName = document.getElementById("modalUserName");
+      if (modalUserName) {
+        modalUserName.textContent = userName;
+      }
+
+      if (successModal) {
+        successModal.show();
+      }
 
       form.reset();
-      clearStarRatingVisual();
+      form.classList.remove("was-validated");
+      fullName.classList.remove("is-valid");
+      email.classList.remove("is-valid");
+      role.classList.remove("is-valid");
+      comments.classList.remove("is-valid");
+      if (ratingWrap) ratingWrap.classList.remove("is-invalid-group");
+    });
+
+    const ratingInputs = form.querySelectorAll('input[name="foodRating"]');
+    ratingInputs.forEach(function (input) {
+      input.addEventListener("change", function () {
+        const ratingWrap = document.getElementById("ratingGroup");
+        if (ratingWrap) ratingWrap.classList.remove("is-invalid-group");
+      });
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     Deals page — Add combo to cart
+     -------------------------------------------------------------------------- */
+  function initDealButtons() {
+    const dealButtons = document.querySelectorAll(".btn-deal-order");
+    const toastEl = document.getElementById("cartToast");
+    let toastInstance = null;
+
+    if (toastEl && typeof bootstrap !== "undefined") {
+      toastInstance = new bootstrap.Toast(toastEl, { delay: 2800 });
     }
-  });
 
-  [nameInput, emailInput, roleSelect, commentsInput].forEach(function (field) {
-    if (!field) return;
-    field.addEventListener('input', function () {
-      clearFieldError(field);
+    dealButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const dealName = btn.getAttribute("data-deal-name") || "Combo";
+        const increment = parseInt(btn.getAttribute("data-increment") || "1", 10);
+        setCartCount(getCartCount() + increment);
+
+        if (toastInstance) {
+          const toastBody = document.getElementById("cartToastBody");
+          if (toastBody) {
+            toastBody.textContent = dealName + " added to your order!";
+          }
+          toastInstance.show();
+        }
+      });
     });
-    field.addEventListener('change', function () {
-      clearFieldError(field);
-    });
-  });
-
-  const starInputs = document.querySelectorAll('input[name="rating"]');
-  starInputs.forEach(function (input) {
-    input.addEventListener('change', function () {
-      const ratingError = document.getElementById('ratingError');
-      if (ratingError) {
-        ratingError.style.display = 'none';
-      }
-    });
-  });
-}
-
-function validateRequiredField(field, message) {
-  if (!field) return true;
-
-  const value = field.value.trim();
-
-  if (value === '') {
-    setFieldError(field, message);
-    return false;
   }
 
-  clearFieldError(field);
-  return true;
-}
-
-function validateEmailField(field) {
-  if (!field) return true;
-
-  const value = field.value.trim();
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  if (value === '') {
-    setFieldError(field, 'Please enter your email address.');
-    return false;
+  /* --------------------------------------------------------------------------
+     Initialize on DOM ready
+     -------------------------------------------------------------------------- */
+  function init() {
+    setActiveNavLink();
+    initNavbarScroll();
+    updateCartBadgeUI(getCartCount());
+    initMenuFilter();
+    initAddToOrder();
+    initFeedbackForm();
+    initDealButtons();
   }
 
-  if (!emailPattern.test(value)) {
-    setFieldError(field, 'Please enter a valid email address.');
-    return false;
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
   }
-
-  clearFieldError(field);
-  return true;
-}
-
-function validateStarRating() {
-  const ratingSelected = document.querySelector('input[name="rating"]:checked');
-  const ratingError = document.getElementById('ratingError');
-
-  if (!ratingSelected) {
-    if (ratingError) {
-      ratingError.textContent = 'Please select a star rating.';
-      ratingError.style.display = 'block';
-    }
-    return false;
-  }
-
-  if (ratingError) {
-    ratingError.style.display = 'none';
-  }
-  return true;
-}
-
-function setFieldError(field, message) {
-  field.classList.add('is-invalid');
-
-  let feedback = field.parentElement.querySelector('.invalid-feedback');
-  if (!feedback) {
-    feedback = document.createElement('div');
-    feedback.className = 'invalid-feedback';
-    field.parentElement.appendChild(feedback);
-  }
-  feedback.textContent = message;
-}
-
-function clearFieldError(field) {
-  field.classList.remove('is-invalid');
-  const feedback = field.parentElement.querySelector('.invalid-feedback');
-  if (feedback) {
-    feedback.textContent = '';
-  }
-}
-
-function clearStarRatingVisual() {
-  const starInputs = document.querySelectorAll('input[name="rating"]');
-  starInputs.forEach(function (input) {
-    input.checked = false;
-  });
-}
+})();
 
