@@ -3,29 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Campus Bites student saver combos and faculty lounge specials—save big on campus meals.">
-  <title>Campus Bites | Deals & Promos</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <meta name="description" content="Click & Eat campus deals — Study Buddy Combo, Lecturer's Lounge Special, and Group Assignment Platters.">
+  <title>Click & Eat | Deals &amp; Combos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-campus sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-light navbar-click-eat sticky-top" aria-label="Main navigation">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Campus <span>Bites</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand navbar-brand-click" href="index.html">
+        <span class="brand-icon" aria-hidden="true"><i class="bi bi-lightning-charge-fill"></i></span>
+        Click &amp; Eat
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarMain">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
-          <li class="nav-item"><a class="nav-link active" href="deals.html">Deals</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
-          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
-            <a class="nav-link btn-order-nav" href="menu.html">Order Now</a>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html" data-page="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="menu.html" data-page="menu.html">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="deals.html" data-page="deals.html">Deals</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html" data-page="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="feedback.html" data-page="feedback.html">Feedback</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="nav-link cart-nav-link" href="menu.html" aria-label="View order cart">
+              <i class="bi bi-bag-fill" aria-hidden="true"></i>
+              <span>Order</span>
+              <span class="cart-badge-count" id="navCartBadge">0</span>
+            </a>
           </li>
         </ul>
       </div>
@@ -33,205 +42,173 @@
   </nav>
 
   <header class="page-header">
-    <div class="container">
-      <h1>Deals &amp; Promos</h1>
-      <p>Student budgets and faculty schedules both deserve great food at unbeatable prices.</p>
+    <div class="container text-center">
+      <span class="section-label text-white opacity-75">Campus Savings</span>
+      <h1 class="display-font mb-2">Deals Built for Campus Life</h1>
+      <p class="mb-0 opacity-75 mx-auto header-lead">Combos priced for students, lecturers, and study groups — all in Botswana Pula.</p>
     </div>
   </header>
 
-  <section class="section-padding">
+  <main class="pb-5">
     <div class="container">
-      <div class="deal-section-student mb-5">
-        <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
-          <div>
-            <span class="badge badge-campus badge-bestseller mb-2">Student Saver</span>
-            <h2 class="section-title mb-1">Student Saver Combos</h2>
-            <p class="text-muted mb-0">High-calorie, budget-friendly meals built for all-nighters and tight wallets.</p>
+      <!-- Promo Banner -->
+      <div class="deal-banner mb-5">
+        <div class="row align-items-center position-relative">
+          <div class="col-lg-8">
+            <span class="badge-deal mb-2 d-inline-block">Limited Semester Offer</span>
+            <h2 class="display-font h3 mb-2">Flash Deal: Order Before 11:00 AM</h2>
+            <p class="mb-0 opacity-90">Beat the lunch rush — pre-order any combo before morning lectures and save an extra P10 at pickup.</p>
+            <p class="countdown-style mb-0"><i class="bi bi-alarm me-2"></i> Valid Mon–Fri · 07:30 – 11:00</p>
           </div>
-          <span class="badge bg-danger fs-6 mt-2 mt-md-0">Up to 35% OFF</span>
-        </div>
-        <div class="row g-4">
-          <div class="col-md-6 col-lg-4">
-            <article class="deal-card">
-              <span class="badge badge-campus badge-bestseller mb-2">Most Popular</span>
-              <h4>The All-Nighter</h4>
-              <p class="text-muted">Syllabus Smasher burger + Quad Fries + energy drink. Everything you need to power through finals week.</p>
-              <p class="deal-original mb-1">Regular: $16.97</p>
-              <p class="deal-price mb-3">$8.99</p>
-              <a href="menu.html" class="btn btn-accent">Order Combo</a>
-            </article>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <article class="deal-card">
-              <span class="badge badge-campus badge-discount mb-2">Save $4</span>
-              <h4>Freshman Feast</h4>
-              <p class="text-muted">Dean's List Bacon Burger + Graduation Onion Rings + Fresh Campus Lemonade.</p>
-              <p class="deal-original mb-1">Regular: $16.47</p>
-              <p class="deal-price mb-3">$12.49</p>
-              <a href="menu.html" class="btn btn-accent">Order Combo</a>
-            </article>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <article class="deal-card">
-              <span class="badge badge-campus badge-new mb-2">New Deal</span>
-              <h4>Veggie Study Break</h4>
-              <p class="text-muted">Late-Night Cram Veggie Burger + Classic Campus Footlong + Vanilla Monster Milkshake.</p>
-              <p class="deal-original mb-1">Regular: $19.47</p>
-              <p class="deal-price mb-3">$13.99</p>
-              <a href="menu.html" class="btn btn-accent">Order Combo</a>
-            </article>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <article class="deal-card">
-              <span class="badge badge-campus badge-discount mb-2">Weekend Only</span>
-              <h4>Quad Stack Deal</h4>
-              <p class="text-muted">Double Syllabus Smasher + double Quad Fries + two lemonades. Split with your roommate.</p>
-              <p class="deal-original mb-1">Regular: $26.94</p>
-              <p class="deal-price mb-3">$18.99</p>
-              <a href="menu.html" class="btn btn-accent">Order Combo</a>
-            </article>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <article class="deal-card">
-              <span class="badge badge-campus badge-bestseller mb-2">Best Value</span>
-              <h4>Chili Dog Duo</h4>
-              <p class="text-muted">Two Varsity Chili Dogs + large Quad Fries + two fountain drinks of your choice.</p>
-              <p class="deal-original mb-1">Regular: $18.96</p>
-              <p class="deal-price mb-3">$11.99</p>
-              <a href="menu.html" class="btn btn-accent">Order Combo</a>
-            </article>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <article class="deal-card">
-              <span class="badge badge-campus badge-discount mb-2">Group Deal</span>
-              <h4>Study Squad Special</h4>
-              <p class="text-muted">Study Group Platter + four Oreo Monster Milkshakes. Perfect for four-person study groups.</p>
-              <p class="deal-original mb-1">Regular: $44.95</p>
-              <p class="deal-price mb-3">$32.99</p>
-              <a href="menu.html" class="btn btn-accent">Order Combo</a>
-            </article>
+          <div class="col-lg-4 text-lg-end mt-3 mt-lg-0 position-relative">
+            <span class="deal-price d-block">From P75.00</span>
           </div>
         </div>
       </div>
 
-      <div class="deal-section-faculty">
-        <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
-          <div>
-            <span class="badge badge-campus badge-lecturer mb-2">Faculty Exclusive</span>
-            <h2 class="section-title mb-1">Faculty Lounge Specials</h2>
-            <p class="text-muted mb-0">Premium, healthier lunch pairings with express-line priority for lecturers.</p>
-          </div>
-          <span class="badge bg-success fs-6 mt-2 mt-md-0">Faculty ID Required</span>
+      <div class="row g-4 mb-5">
+        <!-- Study Buddy Combo -->
+        <div class="col-lg-4">
+          <article class="deal-card">
+            <div class="deal-card-image">
+              <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=700&q=80" alt="Study Buddy Combo burger fries and soda" width="700" height="400" loading="lazy">
+            </div>
+            <div class="p-4">
+              <span class="badge-deal mb-2">Student Favourite</span>
+              <h3 class="h4 display-font">The Study Buddy Combo</h3>
+              <p class="text-muted">Classic Campus Beef Burger, Crispy Masala Fries, and your choice of Soda or Ginger Beer — everything you need between tutorials.</p>
+              <p class="mb-1"><span class="deal-price-old me-2">P105.00</span></p>
+              <p class="deal-price mb-3">P80.00</p>
+              <button type="button" class="btn btn-click-primary w-100 btn-deal-order" data-deal-name="Study Buddy Combo" data-increment="1">Add Combo to Order</button>
+            </div>
+          </article>
         </div>
-        <div class="row g-4">
-          <div class="col-md-6 col-lg-4">
-            <article class="deal-card">
-              <span class="badge badge-campus badge-lecturer mb-2">Lecturer Favorite</span>
-              <h4>Artisan Burger + Gourmet Coffee</h4>
-              <p class="text-muted">Professor's Truffle Mushroom Burger paired with a double-shot Finals Week Espresso and side salad.</p>
-              <p class="deal-original mb-1">Regular: $17.98</p>
-              <p class="deal-price mb-3">$14.99</p>
-              <a href="menu.html" class="btn btn-outline-accent">Order Combo</a>
-            </article>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <article class="deal-card">
-              <span class="badge badge-campus badge-lecturer mb-2">Express Line</span>
-              <h4>Dean's Lunch Express</h4>
-              <p class="text-muted">Dean's List Bacon Burger with a side of Graduation Onion Rings and artisan sparkling water.</p>
-              <p class="deal-original mb-1">Regular: $16.48</p>
-              <p class="deal-price mb-3">$13.49</p>
-              <a href="menu.html" class="btn btn-outline-accent">Order Combo</a>
-            </article>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <article class="deal-card">
-              <span class="badge badge-campus badge-lecturer mb-2">Wellness Pick</span>
-              <h4>Faculty Wellness Plate</h4>
-              <p class="text-muted">Late-Night Cram Veggie Burger, Fresh Campus Lemonade, and a seasonal fruit cup.</p>
-              <p class="deal-original mb-1">Regular: $14.47</p>
-              <p class="deal-price mb-3">$11.99</p>
-              <a href="menu.html" class="btn btn-outline-accent">Order Combo</a>
-            </article>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <article class="deal-card">
-              <span class="badge badge-campus badge-lecturer mb-2">Premium</span>
-              <h4>Department Meeting Platter</h4>
-              <p class="text-muted">Study Group Platter upgraded with truffle sliders, gourmet coffee carafe, and pastries for six.</p>
-              <p class="deal-original mb-1">Regular: $42.99</p>
-              <p class="deal-price mb-3">$34.99</p>
-              <a href="menu.html" class="btn btn-outline-accent">Order Combo</a>
-            </article>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <article class="deal-card">
-              <span class="badge badge-campus badge-lecturer mb-2">Morning Rush</span>
-              <h4>Early Lecture Bundle</h4>
-              <p class="text-muted">Two Finals Week Espressos + bacon breakfast slider + fresh fruit cup before 10 AM.</p>
-              <p class="deal-original mb-1">Regular: $12.97</p>
-              <p class="deal-price mb-3">$9.99</p>
-              <a href="menu.html" class="btn btn-outline-accent">Order Combo</a>
-            </article>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <article class="deal-card">
-              <span class="badge badge-campus badge-lecturer mb-2">Friday Special</span>
-              <h4>Faculty Friday Feast</h4>
-              <p class="text-muted">Professor's Truffle Burger + Quad Fries + strawberry milkshake with 20% faculty discount every Friday.</p>
-              <p class="deal-original mb-1">Regular: $24.97</p>
-              <p class="deal-price mb-3">$19.99</p>
-              <a href="menu.html" class="btn btn-outline-accent">Order Combo</a>
-            </article>
-          </div>
+
+        <!-- Lecturer's Lounge Special -->
+        <div class="col-lg-4">
+          <article class="deal-card">
+            <div class="deal-card-image">
+              <img src="https://images.unsplash.com/photo-1546173159-3157242e1df4?w=700&q=80" alt="Lecturer Lounge mocktail and gourmet side" width="700" height="400" loading="lazy">
+            </div>
+            <div class="p-4">
+              <span class="badge-deal mb-2">Faculty Pick</span>
+              <h3 class="h4 display-font">The Lecturer's Lounge Special</h3>
+              <p class="text-muted">Sunset Varsity Mojito (or Filter Coffee) plus Loaded Cheesy Fries or Golden Onion Rings — refined fuel for office hours.</p>
+              <p class="mb-1"><span class="deal-price-old me-2">P75.00</span></p>
+              <p class="deal-price mb-3">P60.00</p>
+              <button type="button" class="btn btn-click-primary w-100 btn-deal-order" data-deal-name="Lecturer's Lounge Special" data-increment="1">Add Combo to Order</button>
+            </div>
+          </article>
+        </div>
+
+        <!-- Group Assignment Platter -->
+        <div class="col-lg-4">
+          <article class="deal-card">
+            <div class="deal-card-image">
+              <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=700&q=80" alt="Group assignment platter russians and fries" width="700" height="400" loading="lazy">
+            </div>
+            <div class="p-4">
+              <span class="badge-deal mb-2">Share &amp; Save</span>
+              <h3 class="h4 display-font">Group Assignment Platter</h3>
+              <p class="text-muted">4 Jumbo Cheesy Russians, 2 Classic Footlongs, and a large tray of Masala Fries — built for project teams of 6–8.</p>
+              <p class="mb-1"><span class="deal-price-old me-2">P320.00</span></p>
+              <p class="deal-price mb-3">P265.00</p>
+              <button type="button" class="btn btn-click-primary w-100 btn-deal-order" data-deal-name="Group Assignment Platter" data-increment="4">Add Platter to Order</button>
+            </div>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="section-padding bg-dark-section">
-    <div class="container text-center">
-      <h2 class="section-title text-white">Show Your Student or Faculty ID</h2>
-      <p class="section-subtitle text-white-50">Present your campus ID at checkout to unlock these exclusive combo prices.</p>
-      <a href="menu.html" class="btn btn-accent btn-lg">Start Ordering</a>
-    </div>
-  </section>
+      <!-- Extended deals row -->
+      <div class="row g-4 mb-5">
+        <div class="col-md-6">
+          <article class="deal-card deal-card-horizontal d-flex flex-column flex-md-row overflow-hidden">
+            <div class="deal-card-image deal-card-side-image">
+              <img src="https://images.unsplash.com/photo-1495474472287-4d489b1f1b0b?w=500&q=80" alt="Late Night Cram combo with coffee" width="500" height="300" loading="lazy">
+            </div>
+            <div class="p-4 flex-grow-1">
+              <span class="badge-deal mb-2">Exam Season</span>
+              <h3 class="h5 display-font">Late Night Cram Combo</h3>
+              <p class="text-muted small mb-2">Any burger, Masala Fries, and Filter Coffee or Energy Soda.</p>
+              <p class="deal-price mb-2">P85.00</p>
+              <button type="button" class="btn btn-click-outline btn-deal-order" data-deal-name="Late Night Cram Combo">Add to Order</button>
+            </div>
+          </article>
+        </div>
+        <div class="col-md-6">
+          <article class="deal-card deal-card-horizontal d-flex flex-column flex-md-row overflow-hidden">
+            <div class="deal-card-image deal-card-side-image">
+              <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=500&q=80" alt="Lecturer platter with two burgers" width="500" height="300" loading="lazy">
+            </div>
+            <div class="p-4 flex-grow-1">
+              <span class="badge-deal mb-2">Department Meeting</span>
+              <h3 class="h5 display-font">Lecturer's Lounge Platter</h3>
+              <p class="text-muted small mb-2">2 Gourmet Burgers, 2 Coffees, and Large Onion Rings.</p>
+              <p class="deal-price mb-2">P160.00</p>
+              <button type="button" class="btn btn-click-outline btn-deal-order" data-deal-name="Lecturer's Lounge Platter" data-increment="2">Add to Order</button>
+            </div>
+          </article>
+        </div>
+      </div>
 
-  <footer class="footer-campus">
+      <!-- Student ID Callout -->
+      <div class="student-callout">
+        <i class="bi bi-card-heading display-4 text-success mb-3 d-block"></i>
+        <h3 class="h4 display-font mb-2">Student Discount Card</h3>
+        <p class="mb-0 mx-auto lead-narrow">Show your valid <strong>Student ID</strong> at checkout for <strong class="text-accent">10% off</strong> any single menu item. Lecturers: ask about our faculty loyalty stamp card at Window 3.</p>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="cartToast" class="toast toast-click-eat" role="alert" aria-live="polite" aria-atomic="true">
+      <div class="toast-header">
+        <i class="bi bi-bag-check-fill text-accent me-2"></i>
+        <strong class="me-auto">Added to Order</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" id="cartToastBody">Combo added to your order!</div>
+    </div>
+  </div>
+
+  <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="row g-4">
         <div class="col-lg-4">
-          <h5>Campus Bites</h5>
-          <p>Your on-campus restaurant serving students and lecturers with speed, flavor, and unbeatable value since 2018.</p>
-          <div class="footer-social">
-            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          <p class="footer-brand mb-2">Click &amp; Eat</p>
+          <p class="small mb-3">The culinary heartbeat of campus — fast, fresh, and priced in Botswana Pula.</p>
+          <div class="d-flex gap-2">
+            <a href="#" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
           </div>
         </div>
-        <div class="col-lg-4">
-          <h5>Quick Links</h5>
-          <ul class="list-unstyled">
-            <li><a href="menu.html">Full Menu</a></li>
-            <li><a href="deals.html">Student & Faculty Deals</a></li>
-            <li><a href="about.html">Location & Hours</a></li>
-            <li><a href="feedback.html">Contact & Reviews</a></li>
+        <div class="col-6 col-lg-2">
+          <h4 class="h6 text-white mb-3">Quick Links</h4>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="index.html">Home</a></li>
+            <li class="mb-2"><a href="menu.html">Menu</a></li>
+            <li class="mb-2"><a href="deals.html">Deals</a></li>
+            <li class="mb-2"><a href="about.html">About</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
           </ul>
         </div>
-        <div class="col-lg-4">
-          <h5>Visit Us</h5>
-          <p><i class="bi bi-geo-alt-fill text-accent me-2"></i>Student Union Building, Ground Floor<br>North Campus Quad, Room G-12</p>
-          <p><i class="bi bi-clock-fill text-accent me-2"></i>Mon–Fri: 10:00 AM – 10:00 PM<br>Sat–Sun: 11:00 AM – 11:00 PM</p>
+        <div class="col-6 col-lg-3">
+          <h4 class="h6 text-white mb-3">Campus Pickup</h4>
+          <p class="small mb-0"><i class="bi bi-geo-alt-fill me-1 text-accent"></i> University Drive, Block C — Window 3</p>
+          <p class="small mt-2"><i class="bi bi-telephone-fill me-1 text-accent"></i> +267 72 000 000</p>
+        </div>
+        <div class="col-lg-3">
+          <h4 class="h6 text-white mb-3">Opening Hours</h4>
+          <p class="footer-hours mb-0">Mon–Fri: 07:30 – 18:00<br>Sat: 08:00 – 13:00<br>Sun: Closed</p>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Campus Bites. All rights reserved. Made with love for hungry minds.</p>
-      </div>
+      <hr class="border-secondary my-4 opacity-25">
+      <p class="small text-center mb-0 opacity-75">&copy; 2026 Click &amp; Eat. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="script.js"></script>
 </body>
 </html>
