@@ -3,154 +3,174 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Send feedback and reviews to Click &amp; Eat campus restaurant.">
-  <title>Feedback | Click &amp; Eat</title>
+  <meta name="description" content="Share your Campus Bites experience—submit feedback, ratings, and reviews.">
+  <title>Campus Bites | Feedback</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark ce-navbar sticky-top" id="mainNavbar" aria-label="Main navigation">
-      <div class="container">
-        <a class="ce-logo navbar-brand" href="index.html" aria-label="Click and Eat home">
-          <span class="ce-logo__click">Click</span>
-          <span class="ce-logo__amp">&amp;</span>
-          <span class="ce-logo__eat">Eat</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
-            <li class="nav-item"><a class="nav-link" href="deals.html">Deals</a></li>
-            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
-            <li class="nav-item">
-              <a class="nav-link position-relative" href="menu.html" aria-label="View cart">
-                Cart
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill ce-cart-badge" id="cart-count">0</span>
-              </a>
-            </li>
-          </ul>
-        </div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-campus sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Campus <span>Bites</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="deals.html">Deals</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="feedback.html">Feedback</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a class="nav-link btn-order-nav" href="menu.html">Order Now</a>
+          </li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="container">
+      <h1>Contact &amp; Reviews</h1>
+      <p>We love hearing from our campus community. Tell us about your experience!</p>
+    </div>
   </header>
 
-  <main>
-    <section class="page-hero" aria-labelledby="feedback-page-title">
-      <div class="container text-center">
-        <h1 id="feedback-page-title">Feedback &amp; Contact</h1>
-        <p class="mb-0">Tell us about your meal — we read every message from students and staff.</p>
-      </div>
-    </section>
-
-    <section class="container pb-5" aria-labelledby="form-heading">
-      <div class="row g-5">
-        <div class="col-lg-5">
-          <h2 id="form-heading" class="section-title">Get in Touch</h2>
-          <p>Have a suggestion, complaint, or compliment? Fill in the form and our campus team will respond within two working days.</p>
-          <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=480&amp;h=320&amp;fit=crop" class="img-fluid rounded-3 shadow mb-3" alt="Person typing feedback on a laptop at a cafe table" width="480" height="320">
-          <address class="small">
-            <strong>Click &amp; Eat Kiosk</strong><br>
-            Student Centre, Main Campus<br>
-            Gaborone, Botswana<br>
-            <a href="mailto:orders@clickandeat.co.bw">orders@clickandeat.co.bw</a>
-          </address>
-        </div>
+  <section class="section-padding bg-muted-section">
+    <div class="container">
+      <div class="row g-5 justify-content-center">
         <div class="col-lg-7">
-          <div class="alert alert-success form-success-alert" id="form-success" role="status">
-            Thank you! Your feedback has been received. We appreciate you helping us improve campus dining.
-          </div>
-          <div class="card feedback-form-card p-4">
-            <form id="feedback-form" action="#" method="post">
+          <div class="feedback-form-card">
+            <h2 class="section-title text-center mb-4">Share Your Feedback</h2>
+            <form id="feedbackForm" novalidate>
               <div class="mb-3">
-                <label for="full-name" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="full-name" name="fullName" required minlength="2" maxlength="80" placeholder="e.g. Thabo Molefe" autocomplete="name">
-                <div class="invalid-feedback">Please enter your full name (at least 2 characters).</div>
+                <label for="feedbackName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="feedbackName" name="name" placeholder="Enter your full name" autocomplete="name">
               </div>
               <div class="mb-3">
-                <label for="email" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="email" name="email" required placeholder="you@university.ac.bw" autocomplete="email">
-                <div class="invalid-feedback">Please enter a valid email address.</div>
+                <label for="feedbackEmail" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="feedbackEmail" name="email" placeholder="you@university.edu" autocomplete="email">
               </div>
               <div class="mb-3">
-                <label for="role" class="form-label">I am a</label>
-                <select class="form-select" id="role" name="role" required>
-                  <option value="">Choose one...</option>
+                <label for="feedbackRole" class="form-label">Your Role</label>
+                <select class="form-select" id="feedbackRole" name="role">
+                  <option value="">Select your role...</option>
                   <option value="student">Student</option>
                   <option value="lecturer">Lecturer</option>
-                  <option value="staff">Campus Staff</option>
                   <option value="visitor">Visitor</option>
                 </select>
-                <div class="invalid-feedback">Please select your role.</div>
               </div>
               <div class="mb-3">
-                <label for="rating" class="form-label">Overall Rating</label>
-                <input type="number" class="form-control" id="rating" name="rating" required min="1" max="5" step="1" placeholder="1 to 5">
-                <div class="form-text">1 = Poor, 5 = Excellent</div>
-                <div class="invalid-feedback">Please enter a rating between 1 and 5.</div>
+                <label class="form-label">Food Rating</label>
+                <div class="star-rating" aria-label="Rate your food from 1 to 5 stars">
+                  <input type="radio" name="rating" id="star5" value="5">
+                  <label for="star5" title="5 stars"><i class="bi bi-star-fill"></i></label>
+                  <input type="radio" name="rating" id="star4" value="4">
+                  <label for="star4" title="4 stars"><i class="bi bi-star-fill"></i></label>
+                  <input type="radio" name="rating" id="star3" value="3">
+                  <label for="star3" title="3 stars"><i class="bi bi-star-fill"></i></label>
+                  <input type="radio" name="rating" id="star2" value="2">
+                  <label for="star2" title="2 stars"><i class="bi bi-star-fill"></i></label>
+                  <input type="radio" name="rating" id="star1" value="1">
+                  <label for="star1" title="1 star"><i class="bi bi-star-fill"></i></label>
+                </div>
+                <div id="ratingError" class="invalid-feedback" style="display: none;"></div>
               </div>
-              <div class="mb-3">
-                <label for="visit-date" class="form-label">Date of Visit</label>
-                <input type="date" class="form-control" id="visit-date" name="visitDate" required>
-                <div class="invalid-feedback">Please select the date you visited.</div>
+              <div class="mb-4">
+                <label for="feedbackComments" class="form-label">Comments</label>
+                <textarea class="form-control" id="feedbackComments" name="comments" rows="5" placeholder="Tell us what you loved, what we can improve, or your favorite menu item..."></textarea>
               </div>
-              <div class="mb-3">
-                <label for="message" class="form-label">Your Review</label>
-                <textarea class="form-control" id="message" name="message" rows="5" required minlength="20" maxlength="1000" placeholder="Tell us what you ordered and how we can improve..."></textarea>
-                <div class="invalid-feedback">Please write at least 20 characters in your review.</div>
-              </div>
-              <div class="mb-4 form-check">
-                <input type="checkbox" class="form-check-input" id="consent" name="consent" required>
-                <label class="form-check-label" for="consent">I agree that Click &amp; Eat may contact me about this feedback.</label>
-                <div class="invalid-feedback">You must agree before submitting.</div>
-              </div>
-              <button type="submit" class="btn btn-ce-primary btn-lg">Submit Feedback</button>
+              <button type="submit" class="btn btn-submit-feedback">Submit Feedback</button>
+              <div id="formSuccessMessage" class="form-success-message" role="alert"></div>
             </form>
           </div>
         </div>
+        <div class="col-lg-5">
+          <h3 class="fw-bold mb-4">What Our Community Says</h3>
+          <article class="review-card">
+            <p class="reviewer-name">Jordan Mitchell</p>
+            <p class="reviewer-role">Computer Science Student</p>
+            <div class="review-stars">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <p class="mb-0">"The Syllabus Smasher is literally the reason I survived finals week. I ordered through my phone, picked it up in 12 minutes, and it was still hot. The All-Nighter combo is dangerously good value."</p>
+          </article>
+          <article class="review-card">
+            <p class="reviewer-name">Dr. Elena Vasquez</p>
+            <p class="reviewer-role">Associate Professor, Economics</p>
+            <div class="review-stars">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <p class="mb-0">"As someone with only 25 minutes between lectures, the faculty express line is a lifesaver. The truffle burger and espresso combo is genuinely restaurant quality. I recommend Campus Bites to every new faculty member."</p>
+          </article>
+          <article class="review-card">
+            <p class="reviewer-name">Marcus Chen</p>
+            <p class="reviewer-role">Campus Visitor</p>
+            <div class="review-stars">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-half"></i>
+            </div>
+            <p class="mb-0">"Visited campus for an open day and stumbled upon Campus Bites. The Quad Fries alone are worth the trip. Friendly staff, vibrant atmosphere, and the Oreo milkshake is unreal."</p>
+          </article>
+          <div class="mt-4 p-4 bg-white rounded shadow-sm">
+            <h5 class="fw-bold mb-2"><i class="bi bi-envelope-fill text-accent me-2"></i>Direct Contact</h5>
+            <p class="text-muted mb-1"><strong>Email:</strong> hello@campusbites.edu</p>
+            <p class="text-muted mb-0"><strong>Phone:</strong> (555) 019-CAMPUS</p>
+          </div>
+        </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer class="ce-footer">
+  <footer class="footer-campus">
     <div class="container">
       <div class="row g-4">
-        <div class="col-md-4">
-          <a class="ce-logo d-inline-flex mb-2" href="index.html">
-            <span class="ce-logo__click">Click</span>
-            <span class="ce-logo__amp">&amp;</span>
-            <span class="ce-logo__eat">Eat</span>
-          </a>
-          <p class="footer-motto mb-2">&ldquo;Tap. Order. Feast.&rdquo;</p>
-          <p class="small mb-0">Campus food for Botswana students and lecturers.</p>
+        <div class="col-lg-4">
+          <h5>Campus Bites</h5>
+          <p>Your on-campus restaurant serving students and lecturers with speed, flavor, and unbeatable value since 2018.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          </div>
         </div>
-        <div class="col-md-4">
-          <h3 class="h6 text-uppercase fw-bold">Quick Links</h3>
-          <ul class="list-unstyled small">
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="deals.html">Deals</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
+        <div class="col-lg-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="menu.html">Full Menu</a></li>
+            <li><a href="deals.html">Student & Faculty Deals</a></li>
+            <li><a href="about.html">Location & Hours</a></li>
+            <li><a href="feedback.html">Contact & Reviews</a></li>
           </ul>
         </div>
-        <div class="col-md-4">
-          <h3 class="h6 text-uppercase fw-bold">Contact</h3>
-          <p class="small mb-0">Student Centre, Main Campus<br>Gaborone, Botswana<br>orders@clickandeat.co.bw</p>
+        <div class="col-lg-4">
+          <h5>Visit Us</h5>
+          <p><i class="bi bi-geo-alt-fill text-accent me-2"></i>Student Union Building, Ground Floor<br>North Campus Quad, Room G-12</p>
+          <p><i class="bi bi-clock-fill text-accent me-2"></i>Mon–Fri: 10:00 AM – 10:00 PM<br>Sat–Sun: 11:00 AM – 11:00 PM</p>
         </div>
       </div>
-      <hr class="border-secondary my-4">
-      <p class="text-center small mb-0">&copy; <time datetime="2026">2026</time> Click &amp; Eat. All rights reserved.</p>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Campus Bites. All rights reserved. Made with love for hungry minds.</p>
+      </div>
     </div>
   </footer>
-
-  <div class="cart-toast-container" id="cart-toast-container" aria-live="polite"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="script.js"></script>
 </body>
 </html>
-
