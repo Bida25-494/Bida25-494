@@ -3,196 +3,218 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Campus Bites - Fuel your studies with fast campus pickup, student deals, and lecturer express lines.">
-  <title>Campus Bites | Home</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <meta name="description" content="Click & Eat — Fast campus pickup for gourmet burgers, sides, and drinks near your lecture hall. Botswana Pula pricing.">
+  <title>Click & Eat | Home — Campus Food, Fast</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-campus sticky-top">
+  <!-- Global Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light navbar-click-eat sticky-top" aria-label="Main navigation">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Campus <span>Bites</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand navbar-brand-click" href="index.html">
+        <span class="brand-icon" aria-hidden="true"><i class="bi bi-lightning-charge-fill"></i></span>
+        Click &amp; Eat
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarMain">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
-          <li class="nav-item"><a class="nav-link" href="deals.html">Deals</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
-          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
-            <a class="nav-link btn-order-nav" href="menu.html">Order Now</a>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html" data-page="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="menu.html" data-page="menu.html">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="deals.html" data-page="deals.html">Deals</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html" data-page="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="feedback.html" data-page="feedback.html">Feedback</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="nav-link cart-nav-link" href="menu.html" aria-label="View order cart">
+              <i class="bi bi-bag-fill" aria-hidden="true"></i>
+              <span>Order</span>
+              <span class="cart-badge-count" id="navCartBadge">0</span>
+            </a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <header class="hero-section">
-    <div class="container">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-6">
-          <p class="text-accent fw-semibold mb-2">Campus Dining, Reimagined</p>
-          <h1 class="hero-headline">Fuel Your Studies, Feed Your Cravings</h1>
-          <p class="hero-subtext">Premium burgers, loaded fries, and brain-boosting drinks—ready in under 15 minutes. Built for busy students and lecturers on the go.</p>
-          <div class="d-flex flex-wrap gap-3 mt-4">
-            <a href="menu.html" class="btn btn-accent btn-lg">Browse Menu</a>
-            <a href="deals.html" class="btn btn-outline-accent btn-lg">View Student Deals</a>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" aria-labelledby="heroHeading">
+      <div class="container">
+        <div class="row align-items-center g-4 g-lg-5">
+          <div class="col-lg-6 order-2 order-lg-1">
+            <span class="section-label">Campus Pickup · Gaborone</span>
+            <h1 id="heroHeading" class="hero-headline display-font">
+              Skip the Lecture Queue.<br>
+              <span class="highlight">Click &amp; Eat.</span>
+            </h1>
+            <p class="hero-subtext mt-3">
+              Gourmet burgers, masala fries, and lecturer-grade coffee — ready between classes.
+              Order ahead, grab at the campus window, and get back to what matters.
+            </p>
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a href="menu.html" class="btn btn-click-primary btn-lg">Browse Full Menu</a>
+              <a href="deals.html" class="btn btn-click-outline btn-lg">Student &amp; Lecturer Deals</a>
+            </div>
+          </div>
+          <div class="col-lg-6 order-1 order-lg-2">
+            <div class="hero-image-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80"
+                alt="Premium gourmet burger with melted cheese and fresh toppings"
+                width="900"
+                height="675"
+                loading="eager"
+              >
+              <span class="hero-badge-float"><i class="bi bi-clock-fill text-accent me-1"></i> Ready in ~12 min</span>
+            </div>
           </div>
         </div>
-        <div class="col-lg-6">
-          <div class="hero-image-wrap">
-            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80" alt="Premium gourmet burger with fresh ingredients" width="800" height="600">
-            <span class="hero-badge"><i class="bi bi-lightning-charge-fill me-1"></i> Ready in 15 min</span>
+      </div>
+    </section>
+
+    <!-- Feature Grid -->
+    <section class="py-5 bg-cream" aria-labelledby="featuresHeading">
+      <div class="container py-4">
+        <div class="text-center mb-5">
+          <span class="section-label">Why Campus Chooses Us</span>
+          <h2 id="featuresHeading" class="section-title display-font">Built for Busy Academic Life</h2>
+          <p class="text-muted mx-auto lead-narrow">Every detail is tuned for students rushing between lectures and lecturers who need reliable, quality fuel.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <article class="feature-card text-center text-md-start">
+              <div class="feature-icon mx-auto mx-md-0"><i class="bi bi-stopwatch-fill"></i></div>
+              <h3 class="h5 display-font">Speedy Pickup Between Classes</h3>
+              <p class="text-muted mb-0">Pre-order from your phone and collect at our campus window — no long queues, no missed tutorials.</p>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="feature-card text-center text-md-start">
+              <div class="feature-icon mx-auto mx-md-0"><i class="bi bi-mortarboard-fill"></i></div>
+              <h3 class="h5 display-font">Lecturer Pre-orders</h3>
+              <p class="text-muted mb-0">Schedule gourmet platters and filter coffee before your department meeting. We respect your timetable.</p>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="feature-card text-center text-md-start">
+              <div class="feature-icon mx-auto mx-md-0"><i class="bi bi-flower1"></i></div>
+              <h3 class="h5 display-font">Fresh Campus Ingredients</h3>
+              <p class="text-muted mb-0">Local produce, house-made sauces, and Botswana-inspired flavours — quality you can taste on every bite.</p>
+            </article>
           </div>
         </div>
       </div>
-    </div>
-  </header>
+    </section>
 
-  <section class="section-padding bg-muted-section">
-    <div class="container">
-      <div class="text-center">
-        <h2 class="section-title">Why <span class="gradient-text">Campus Bites</span>?</h2>
-        <p class="section-subtitle">Everything you need between lectures, labs, and late-night study sessions.</p>
-      </div>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <article class="feature-card">
-            <div class="feature-icon"><i class="bi bi-stopwatch"></i></div>
-            <h4>Under 15-Minute Pickup</h4>
-            <p>Order from your phone, skip the line, and grab your meal at our central campus kiosk—fast enough to make it to your next class.</p>
-          </article>
+    <!-- Featured Items -->
+    <section class="py-5" aria-labelledby="featuredHeading">
+      <div class="container py-3">
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+          <div>
+            <span class="section-label">Crowd Favourites</span>
+            <h2 id="featuredHeading" class="section-title display-font mb-0">Top Sellers This Semester</h2>
+          </div>
+          <a href="menu.html" class="btn btn-click-outline">View All Items</a>
         </div>
-        <div class="col-md-4">
-          <article class="feature-card">
-            <div class="feature-icon"><i class="bi bi-mortarboard"></i></div>
-            <h4>Lecturer Express Line</h4>
-            <p>Faculty members get priority service and premium combos designed for quick, satisfying lunches between back-to-back lectures.</p>
-          </article>
-        </div>
-        <div class="col-md-4">
-          <article class="feature-card">
-            <div class="feature-icon"><i class="bi bi-moon-stars"></i></div>
-            <h4>Late-Night Study Delivery</h4>
-            <p>Extended hours during exam season with delivery straight to the library and study halls—fuel for the all-nighters.</p>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-padding">
-    <div class="container">
-      <div class="text-center">
-        <h2 class="section-title">Featured <span class="gradient-text">Best Sellers</span></h2>
-        <p class="section-subtitle">Our top-rated burgers loved by students and faculty alike.</p>
-      </div>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <article class="card food-card h-100">
-            <div class="food-card-img-wrap">
-              <img src="https://images.unsplash.com/photo-1553979459-222f912e85b4?w=600&q=80" class="food-card-img" alt="The Syllabus Smasher double cheeseburger" width="600" height="412">
-              <span class="position-absolute top-0 start-0 m-3 badge badge-campus badge-bestseller">Best Seller</span>
-            </div>
-            <div class="card-body d-flex flex-column">
-              <h3 class="card-title">The Syllabus Smasher</h3>
-              <p class="card-text">Double beef patties, melted cheddar, crispy lettuce, and our secret campus sauce on a toasted brioche bun.</p>
-              <div class="d-flex justify-content-between align-items-center mt-auto">
-                <span class="food-price">$9.49</span>
-                <span class="badge badge-campus badge-discount">Student Discount</span>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <article class="food-card">
+              <div class="food-card-image-wrap">
+                <span class="badge-category">Burger</span>
+                <img src="https://images.unsplash.com/photo-1553979459-218376b71618?w=600&q=80" alt="Classic Campus Beef Burger" width="600" height="412" loading="lazy">
               </div>
-              <a href="menu.html" class="btn btn-add-cart mt-3">Add to Cart</a>
-            </div>
-          </article>
-        </div>
-        <div class="col-md-4">
-          <article class="card food-card h-100">
-            <div class="food-card-img-wrap">
-              <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&q=80" class="food-card-img" alt="The Dean's List bacon burger" width="600" height="412">
-              <span class="position-absolute top-0 start-0 m-3 badge badge-campus badge-bestseller">Best Seller</span>
-            </div>
-            <div class="card-body d-flex flex-column">
-              <h3 class="card-title">The Dean's List Bacon Burger</h3>
-              <p class="card-text">Thick-cut applewood bacon, aged cheddar, caramelized onions, and smoky BBQ glaze on a premium Angus patty.</p>
-              <div class="d-flex justify-content-between align-items-center mt-auto">
-                <span class="food-price">$10.99</span>
+              <div class="food-card-body">
+                <h3 class="food-card-title display-font">Classic Campus Beef Burger</h3>
+                <p class="food-card-desc">Angus-style patty, campus-secret sauce, crisp lettuce, and toasted brioche bun.</p>
+                <div class="food-card-footer">
+                  <span class="price-tag">P65.00</span>
+                  <a href="menu.html" class="btn-menu-link">Order Now</a>
+                </div>
               </div>
-              <a href="menu.html" class="btn btn-add-cart mt-3">Add to Cart</a>
-            </div>
-          </article>
-        </div>
-        <div class="col-md-4">
-          <article class="card food-card h-100">
-            <div class="food-card-img-wrap">
-              <img src="https://images.unsplash.com/photo-1520072959219-cad0248eb42d?w=600&q=80" class="food-card-img" alt="The Professor's truffle mushroom burger" width="600" height="412">
-              <span class="position-absolute top-0 start-0 m-3 badge badge-campus badge-lecturer">Lecturer Favorite</span>
-            </div>
-            <div class="card-body d-flex flex-column">
-              <h3 class="card-title">The Professor's Truffle Burger</h3>
-              <p class="card-text">Sautéed wild mushrooms, truffle aioli, arugula, and Swiss cheese on a grass-fed patty—sophisticated campus dining.</p>
-              <div class="d-flex justify-content-between align-items-center mt-auto">
-                <span class="food-price">$12.49</span>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="food-card">
+              <div class="food-card-image-wrap">
+                <span class="badge-category">Burger</span>
+                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&q=80" alt="Double Cheese Lecture-Buster" width="600" height="412" loading="lazy">
               </div>
-              <a href="menu.html" class="btn btn-add-cart mt-3">Add to Cart</a>
-            </div>
-          </article>
+              <div class="food-card-body">
+                <h3 class="food-card-title display-font">Double Cheese Lecture-Buster</h3>
+                <p class="food-card-desc">Twin patties, triple cheddar, caramelised onions — built for grading marathons.</p>
+                <div class="food-card-footer">
+                  <span class="price-tag">P95.00</span>
+                  <a href="menu.html" class="btn-menu-link">Order Now</a>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="food-card">
+              <div class="food-card-image-wrap">
+                <span class="badge-category">Sides</span>
+                <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&q=80" alt="Crispy Masala Fries" width="600" height="412" loading="lazy">
+              </div>
+              <div class="food-card-body">
+                <h3 class="food-card-title display-font">Crispy Masala Fries</h3>
+                <p class="food-card-desc">Golden fries tossed in house masala spice blend with coriander dip.</p>
+                <div class="food-card-footer">
+                  <span class="price-tag">P25.00</span>
+                  <a href="menu.html" class="btn-menu-link">Order Now</a>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
-      <div class="text-center mt-5">
-        <a href="menu.html" class="btn btn-accent btn-lg">View Full Menu</a>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section class="section-padding bg-dark-section">
-    <div class="container text-center">
-      <h2 class="section-title text-white">Hungry Between Classes?</h2>
-      <p class="section-subtitle text-white-50">Join thousands of students and lecturers who trust Campus Bites every day.</p>
-      <a href="deals.html" class="btn btn-accent btn-lg me-2 mb-2">Grab a Combo Deal</a>
-      <a href="feedback.html" class="btn btn-outline-accent btn-lg mb-2">Share Your Experience</a>
-    </div>
-  </section>
-
-  <footer class="footer-campus">
+  <!-- Global Footer -->
+  <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="row g-4">
         <div class="col-lg-4">
-          <h5>Campus Bites</h5>
-          <p>Your on-campus restaurant serving students and lecturers with speed, flavor, and unbeatable value since 2018.</p>
-          <div class="footer-social">
-            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          <p class="footer-brand mb-2">Click &amp; Eat</p>
+          <p class="small mb-3">The culinary heartbeat of campus — fast, fresh, and priced in Botswana Pula.</p>
+          <div class="d-flex gap-2">
+            <a href="#" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
           </div>
         </div>
-        <div class="col-lg-4">
-          <h5>Quick Links</h5>
-          <ul class="list-unstyled">
-            <li><a href="menu.html">Full Menu</a></li>
-            <li><a href="deals.html">Student & Faculty Deals</a></li>
-            <li><a href="about.html">Location & Hours</a></li>
-            <li><a href="feedback.html">Contact & Reviews</a></li>
+        <div class="col-6 col-lg-2">
+          <h4 class="h6 text-white mb-3">Quick Links</h4>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="index.html">Home</a></li>
+            <li class="mb-2"><a href="menu.html">Menu</a></li>
+            <li class="mb-2"><a href="deals.html">Deals</a></li>
+            <li class="mb-2"><a href="about.html">About</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
           </ul>
         </div>
-        <div class="col-lg-4">
-          <h5>Visit Us</h5>
-          <p><i class="bi bi-geo-alt-fill text-accent me-2"></i>Student Union Building, Ground Floor<br>North Campus Quad, Room G-12</p>
-          <p><i class="bi bi-clock-fill text-accent me-2"></i>Mon–Fri: 10:00 AM – 10:00 PM<br>Sat–Sun: 11:00 AM – 11:00 PM</p>
+        <div class="col-6 col-lg-3">
+          <h4 class="h6 text-white mb-3">Campus Pickup</h4>
+          <p class="small mb-0"><i class="bi bi-geo-alt-fill me-1 text-accent"></i> University Drive, Block C — Window 3</p>
+          <p class="small mt-2"><i class="bi bi-telephone-fill me-1 text-accent"></i> +267 72 000 000</p>
+        </div>
+        <div class="col-lg-3">
+          <h4 class="h6 text-white mb-3">Opening Hours</h4>
+          <p class="footer-hours mb-0">Mon–Fri: 07:30 – 18:00<br>Sat: 08:00 – 13:00<br>Sun: Closed</p>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Campus Bites. All rights reserved. Made with love for hungry minds.</p>
-      </div>
+      <hr class="border-secondary my-4 opacity-25">
+      <p class="small text-center mb-0 opacity-75">&copy; 2026 Click &amp; Eat. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="script.js"></script>
 </body>
 </html>
